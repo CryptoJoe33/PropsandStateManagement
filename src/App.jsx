@@ -14,10 +14,14 @@ function TodoList() {
 
   const [tasks, setTasks] = useState(['Do Laundry', 'Go to Gym', 'Walk Dog'])
 
+  const handleAdd = (newTask) => {
+    setTasks([...tasks, newTask]);
+  }
+
   return (
     <SafeAreaView>
       <ToDoList tasks = {tasks}/>
-      <ToDoForm/>
+      <ToDoForm onAdd = {handleAdd}/>
     </SafeAreaView>
   );
 }
