@@ -4,27 +4,28 @@
  *
  * @format
  */
-import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
-import ToDoList from './ToDoList';
-import ToDoForm from './TodoForm';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
+import Home from "./src/screens/Home";
+import About from "./src/screens/About";
+
+const Stack = createStackNavigator();
 
 function TodoList() {
-
-  const [tasks, setTasks] = useState(['Do Laundry', 'Go to Gym', 'Walk Dog'])
-
-  const handleAdd = (newTask) => {
-    setTasks([...tasks, newTask]);
-  }
-
   return (
-    <SafeAreaView>
-      <ToDoList tasks = {tasks}/>
-      <ToDoForm onAdd = {handleAdd}/>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="About" component={About} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({});
 
 
 export default TodoList;
